@@ -1,9 +1,9 @@
 from fastapi import FastAPI, HTTPException, Depends
 from fastapi.security import HTTPAuthorizationCredentials
 
-from api.admin.schemas import Question
-from core.database import get_database_connection
-from core.security import security, validate_admin_roles
+from app.api.admin.schemas import Question
+from app.core.database import get_database_connection
+from app.core.security import security, validate_admin_roles
 
 router = FastAPI()
 
