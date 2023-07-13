@@ -4,15 +4,14 @@ from starlette.responses import JSONResponse
 
 from api.admin.schemas import Question, Solution
 from core.database import get_database_connection
-from core.security import security, validate_roles
+from core.security import security, validate_admin_roles, validate_user_roles
 from utils.sphere.create_problem import SphereAPI
 
 router = FastAPI()
 
-
-
 @router.post("/questions/check-solution")
-async def check_solution(solution: Solution):
+async def check_solution(credentials: HTTPAuthorizationCredentials = Depends(security), solution: Solution=None):
+    await validate_user_roles(credentials)
     client = get_database_connection()
     sphere_api = SphereAPI()
     db = client["CometLabs"]

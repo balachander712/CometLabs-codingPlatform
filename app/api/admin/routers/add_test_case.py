@@ -5,13 +5,13 @@ from fastapi.security import HTTPAuthorizationCredentials
 
 from api.admin.schemas import TestCase
 from core.database import get_database_connection
-from core.security import security, validate_roles
+from core.security import security, validate_admin_roles
 
 router = FastAPI()
 
 @router.post("/admin/questions/test-cases/add")
 async def add_test_case(credentials: HTTPAuthorizationCredentials = Depends(security), test_cases: List[TestCase]=None):
-    await validate_roles(credentials)
+    await validate_admin_roles(credentials)
     client = get_database_connection()
     db = client["CometLabs"]  # Replace "CometLabs" with your actual database name
     collection = db["test_cases"]  # Replace with your collection name

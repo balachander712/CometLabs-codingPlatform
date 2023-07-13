@@ -3,14 +3,14 @@ from fastapi.security import HTTPAuthorizationCredentials
 
 from api.admin.schemas import Question
 from core.database import get_database_connection
-from core.security import security, validate_roles
+from core.security import security, validate_admin_roles
 
 router = FastAPI()
 
 
 @router.put("/admin/questions/edit")
 async def edit_question(credentials: HTTPAuthorizationCredentials = Depends(security), question: Question = None):
-    await validate_roles(credentials)
+    await validate_admin_roles(credentials)
     client = get_database_connection()
     db = client["CometLabs"]
     collection = db["questions"]

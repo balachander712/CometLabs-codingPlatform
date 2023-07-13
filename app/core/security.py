@@ -23,12 +23,23 @@ def get_password_hash(password):
     return bcrypt.hash(password)
 
 
-async def validate_roles(credentials: HTTPAuthorizationCredentials = Depends(security)):
+async def validate_admin_roles(credentials: HTTPAuthorizationCredentials = Depends(security)):
     token = credentials.credentials
     try:
         payload = jwt.decode(token, SECRET_KEY, algorithms=[HASH_ALGORITHM])
         role = payload.get("role")
         if role != "admin":
+            raise HTTPException(status_code=403, detail="Insufficient permissions")
+    except InvalidTokenError:
+        raise HTTPException(status_code=403, detail="Invalid token")
+
+
+async def validate_user_roles(credentials: HTTPAuthorizationCredentials = Depends(security)):
+    token = credentials.credentials
+    try:
+        payload = jwt.decode(token, SECRET_KEY, algorithms=[HASH_ALGORITHM])
+        role = payload.get("role")
+        if role != "user":
             raise HTTPException(status_code=403, detail="Insufficient permissions")
     except InvalidTokenError:
         raise HTTPException(status_code=403, detail="Invalid token")
@@ -58,5 +69,3 @@ def authenticate_user(email: str, password: str):
 
     user = User(**user_data)
     return user
-
-
