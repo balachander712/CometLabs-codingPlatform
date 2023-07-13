@@ -2,10 +2,10 @@ from fastapi import FastAPI, HTTPException, Depends
 from fastapi.security import HTTPAuthorizationCredentials
 from starlette.responses import JSONResponse
 
-from app.api.admin.schemas import Question, Solution
-from app.core.database import get_database_connection
-from app.core.security import security, validate_roles
-from app.utils.sphere.create_problem import SphereAPI
+from api.admin.schemas import Question, Solution
+from core.database import get_database_connection
+from core.security import security, validate_roles
+from utils.sphere.create_problem import SphereAPI
 
 router = FastAPI()
 

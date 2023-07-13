@@ -3,9 +3,8 @@ from typing import Dict
 
 from fastapi import APIRouter, HTTPException
 
-from app.core.database import get_database_connection
-from app.core.security import get_password_hash, create_access_token, authenticate_user
-from app.api.auth.schemas import User, LoginData
+from core.security import get_password_hash, create_access_token, authenticate_user
+from api.auth.schemas import User, LoginData
 from dotenv import load_dotenv
 import os
 
