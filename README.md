@@ -17,7 +17,9 @@ Follow these steps to run the project using Docker:
    https://github.com/balachander712/CometLabs-codingPlatform
    ```
    
-1. Navigate into the Project Directory and run
+1. Navigate into the Project Directory
+2. Create a file named `.current.env` and copy the env variables sent in the mail
+3. Then run:
 
    ```shell
       docker-compose up --build
