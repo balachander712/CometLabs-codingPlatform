@@ -8,8 +8,8 @@ from jwt.exceptions import InvalidTokenError
 from dotenv import load_dotenv
 import os
 
-from api.auth.schemas import User
-from core.database import get_database_connection
+from app.api.auth.schemas import User
+from app.core.database import get_database_connection
 
 load_dotenv()
 

@@ -3,9 +3,9 @@ from typing import List
 from fastapi import FastAPI, Depends
 from fastapi.security import HTTPAuthorizationCredentials
 
-from api.admin.schemas import TestCase
-from core.database import get_database_connection
-from core.security import security, validate_roles
+from app.api.admin.schemas import TestCase
+from app.core.database import get_database_connection
+from app.core.security import security, validate_roles
 
 router = FastAPI()
 

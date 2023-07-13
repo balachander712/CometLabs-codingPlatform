@@ -1,11 +1,11 @@
 from fastapi import FastAPI
-from api.auth.sign_up import router as signup_router
-from api.auth.login import router as login_router
-from api.admin.routers.add_question import router as add_question
-from api.admin.routers.delete_question import router as delete_question
-from api.admin.routers.edit_question import router as edit_question
-from api.admin.routers.add_test_case import router as add_test_case
-from api.users.check_solution import router as check_solution
+from app.api.auth.sign_up import router as signup_router
+from app.api.auth.login import router as login_router
+from app.api.admin.routers.add_question import router as add_question
+from app.api.admin.routers.delete_question import router as delete_question
+from app.api.admin.routers.edit_question import router as edit_question
+from app.api.admin.routers.add_test_case import router as add_test_case
+from app.api.users.check_solution import router as check_solution
 
 app = FastAPI()
 
