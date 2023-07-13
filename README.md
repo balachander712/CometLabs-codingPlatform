@@ -31,6 +31,6 @@ You can try testing the endpoint by hitting the endpoint
       http://127.0.0.1:8005/<endpoint>
    ```
 
-Please refer to the documentation inside the docs folder for full API documentation.
+Please refer to the documentation inside the docs folder for full API documentation. (index.html)
 
 The Screenshots of the API Requests are included inside docs/images directory.
